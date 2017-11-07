@@ -36,9 +36,9 @@
    * to unsigned long will allow us to go to 32x32 if higher resolution Mesh's are needed
    * in the future.
    */
-  void bit_clear(uint16_t bits[16], uint8_t x, uint8_t y) { CBI(bits[y], x); }
-  void bit_set(uint16_t bits[16], uint8_t x, uint8_t y) { SBI(bits[y], x); }
-  bool is_bit_set(uint16_t bits[16], uint8_t x, uint8_t y) { return TEST(bits[y], x); }
+  void bit_clear(uint16_t bits[16], const uint8_t x, const uint8_t y) { CBI(bits[y], x); }
+  void bit_set(uint16_t bits[16], const uint8_t x, const uint8_t y) { SBI(bits[y], x); }
+  bool is_bit_set(uint16_t bits[16], const uint8_t x, const uint8_t y) { return TEST(bits[y], x); }
 
   uint8_t ubl_cnt = 0;
 
@@ -117,9 +117,9 @@
       SERIAL_ECHO_SP(spaces + 3);
       serial_echo_xy(GRID_MAX_POINTS_X - 1, GRID_MAX_POINTS_Y - 1);
       SERIAL_EOL();
-      serial_echo_xy(UBL_MESH_MIN_X, UBL_MESH_MAX_Y);
+      serial_echo_xy(MESH_MIN_X, MESH_MAX_Y);
       SERIAL_ECHO_SP(spaces);
-      serial_echo_xy(UBL_MESH_MAX_X, UBL_MESH_MAX_Y);
+      serial_echo_xy(MESH_MAX_X, MESH_MAX_Y);
       SERIAL_EOL();
     }
     else {
@@ -166,9 +166,9 @@
     }
 
     if (map_type == 0) {
-      serial_echo_xy(UBL_MESH_MIN_X, UBL_MESH_MIN_Y);
+      serial_echo_xy(MESH_MIN_X, MESH_MIN_Y);
       SERIAL_ECHO_SP(spaces + 4);
-      serial_echo_xy(UBL_MESH_MAX_X, UBL_MESH_MIN_Y);
+      serial_echo_xy(MESH_MAX_X, MESH_MIN_Y);
       SERIAL_EOL();
       serial_echo_xy(0, 0);
       SERIAL_ECHO_SP(spaces + 5);
